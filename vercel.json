@@ -1,0 +1,31 @@
+
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "jewellery-api": {
+      "root": "backend",
+      "framework": "django",
+      "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+    },
+    "frontend": {
+      "root": "frontend",
+      "framework": "vite"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "jewellery-api"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
+    }
+  ]
+}
+
+ 
