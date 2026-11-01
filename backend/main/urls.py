@@ -1,0 +1,75 @@
+from django.urls import include, path
+
+from . import views as v
+
+urlpatterns = [
+    path("", v.index),
+    # auth & account
+    path("auth/login/", v.login_view),
+    path("auth/refresh/", v.refresh_view),
+    path("auth/logout/", v.logout_view),
+    path("auth/me/", v.me),
+    path("auth/password/", v.change_password),
+    path("auth/2fa/setup/", v.twofa_setup),
+    path("auth/2fa/enable/", v.twofa_enable),
+    path("auth/2fa/disable/", v.twofa_disable),
+    path("auth/logins/", v.login_history),
+    path("password_reset/", include("django_rest_passwordreset.urls", namespace="password_reset")),
+    path("users/", v.users),
+    path("users/<int:pk>/", v.user_detail),
+    path("users/<int:pk>/signout/", v.user_signout),
+    path("users/<int:pk>/unlock/", v.user_unlock),
+    # shop setup
+    path("shop/", v.shop_view),
+    path("shop/logo/", v.shop_logo),
+    path("grades/", v.grades),
+    path("grades/<int:pk>/", v.grade_detail),
+    path("rates/", v.rates_history),
+    path("rates/today/", v.rates_today),
+    path("rates/set/", v.rates_set),
+    path("rates/report/", v.rates_report),
+    # dashboard & reports
+    path("dashboard/", v.dashboard),
+    path("reports/sales/", v.sales_report),
+    path("reports/items/", v.items_report),
+    # people
+    path("customers/", v.customers),
+    path("customers/<int:pk>/", v.customer_detail),
+    path("suppliers/", v.suppliers),
+    path("suppliers/<int:pk>/", v.supplier_detail),
+    path("suppliers/<int:pk>/photo/", v.supplier_photo),
+    path("purchases/", v.purchases),
+    path("purchases/<int:pk>/", v.purchase_detail),
+    path("supplier-payments/", v.supplier_payments),
+    path("supplier-payments/<int:pk>/", v.supplier_payment_detail),
+    path("staff/", v.staff),
+    path("staff/<int:pk>/", v.staff_detail),
+    path("staff/<int:pk>/photo/", v.staff_photo),
+    # products
+    path("catalog/", v.catalog),
+    path("catalog/<int:pk>/", v.catalog_detail),
+    path("catalog/<int:pk>/image/", v.catalog_image),
+    path("stock/", v.stock),
+    path("stock/categories/", v.stock_categories),
+    path("stock/code/<str:code>/", v.stock_by_code),
+    path("stock/<int:pk>/", v.stock_detail),
+    path("stock/<int:pk>/photo/", v.stock_photo),
+    # orders & work
+    path("orders/", v.orders),
+    path("orders/<int:pk>/", v.order_detail),
+    path("orders/<int:pk>/status/", v.order_status),
+    path("orders/<int:pk>/pending-items/", v.order_pending_items),
+    path("order-items/<int:pk>/design/", v.order_item_design),
+    path("work/", v.work),
+    path("work/<int:pk>/", v.work_detail),
+    path("work/<int:pk>/receive/", v.work_receive),
+    # bills
+    path("bills/", v.bills),
+    path("bills/<int:pk>/", v.bill_detail),
+    path("bills/<int:pk>/payments/", v.bill_payments),
+    path("bill-payments/<int:pk>/", v.bill_payment_detail),
+    # activity & backup
+    path("activity/", v.activity),
+    path("activity/latest/", v.activity_latest),
+    path("backup/", v.backup),
+]

@@ -1,0 +1,25 @@
+{
+  "name": "siagha-frontend",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "5.1.0",
+    "@fontsource/ibm-plex-sans-arabic": "5.1.0",
+    "axios": "1.7.7",
+    "jsbarcode": "3.11.6",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.26.2",
+    "recharts": "2.12.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.3.2",
+    "vite": "5.4.8"
+  }
+}
